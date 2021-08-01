@@ -1,5 +1,5 @@
-Please enumerate the references you used in a list here:
+## References
 
-- [Google](http://www.google.com)
-- 
+- To review flask and python: my [take-home coding challenge](https://github.com/grubnubble/safeharbor) for Elsevier in 2019
+- For a review of Python data structures: the [Python docs](https://docs.python.org/3/tutorial/datastructures.html)
 - 
