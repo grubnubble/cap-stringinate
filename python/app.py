@@ -5,6 +5,16 @@ from flask import request
 app = Flask(__name__)
 
 seen_strings = {}
+longest_string = ''
+
+def get_highest_value_from_dictionary(dictionary):
+    key_with_highest_value = ''
+    the_highest_value = 0
+    for key in dictionary.keys():
+        if dictionary[key] > the_highest_value:
+            key_with_highest_value = key
+            the_highest_value = dictionary[key]
+    return (key_with_highest_value, the_highest_value)
 
 @app.route('/')
 def root():
@@ -31,6 +41,10 @@ def stringinate():
     else:
         seen_strings[input] = 1
 
+    global longest_string
+    if len(input) >= len(longest_string):
+        longest_string = input
+
     input_without_punct = re.sub(r"[^\w\s]", "", input)
     stripped_input = re.sub(r"\s+", "", input_without_punct)
     char_dict = {}
@@ -40,31 +54,21 @@ def stringinate():
         else:
             char_dict[stripped_input[i]] = 1
 
-    most_common_char = ''
-    most_common_occurences = 0
-    for char in char_dict.keys():
-        if char_dict[char] > most_common_occurences:
-            most_common_char = char
-            most_common_occurences = char_dict[char]
-
+    (most_common_char, occurences) = get_highest_value_from_dictionary(char_dict)
 
     return {
         "input": input,
         "length": len(input),
         "most_common_character": most_common_char,
-        "occurences_of_most_common_character": most_common_occurences,
+        "occurences_of_most_common_character": occurences,
     }
 
 @app.route('/stats')
 def string_stats():
-    most_popular_string = ''
-    most_popular_occurences = 0
-    for item in seen_strings.keys():
-        if seen_strings[item] > most_popular_occurences:
-            most_popular_string = item
-            most_popular_occurences = seen_strings[item]
+    (most_popular_string, occurences) = get_highest_value_from_dictionary(seen_strings)
 
     return {
         "inputs": seen_strings,
         "most_popular": most_popular_string,
+        "longest_input_received": longest_string,
     }

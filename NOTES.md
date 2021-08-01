@@ -19,3 +19,8 @@ There is a helper function I could write to make finding the dicitonary item wit
 
 ## Testing
 I decided to work on tests as I go, which has the benefit of covering the "add your own adventure" feature portion of this assignment. To run tests, you will need to install [pytest](https://docs.pytest.org/en/6.2.x/getting-started.html). Normally, you should be able to run `pytest` in the command line, but that was giving me trouble, so I run the tests with `python -m pytest` and it works better for me.
+
+## Improvements
+In thinking about improvements, my first thoughts go to the possibility of creating a class for the string inputs. I also do wonder if there is a more efficient/performative solution for finding the most common character. I ended up not researching other solutions due to time constraints, but I don't expect mine is the most performative option out there. Given more time, I would want to find other possible options.
+
+Other improvements: showing all most common characters or most popular inputs if there are ties, returning a meaningful message if there have been no inputs yet.

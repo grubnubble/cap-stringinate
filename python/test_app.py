@@ -52,3 +52,13 @@ def test_stats_gives_most_popular_string():
 		with_whitespace_and_punct["input"]: 2,
 	}
 	assert expected_response["most_popular"] == with_whitespace_and_punct["input"]
+
+def test_stats_gives_longest_input_received():
+	response = client.get("/stats")
+	assert response.status_code == 200
+	expected_response = ast.literal_eval(response.data.decode("utf-8"))
+	assert expected_response["inputs"] == {
+		no_whitespace_or_punct["input"]: 1,
+		with_whitespace_and_punct["input"]: 2,
+	}
+	assert expected_response["longest_input_received"] == no_whitespace_or_punct["input"]
