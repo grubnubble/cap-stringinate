@@ -30,9 +30,26 @@ def stringinate():
     else:
         seen_strings[input] = 1
 
+    char_dict = {}
+    for i in range(len(input)):
+        if input[i] in char_dict:
+            char_dict[input[i]] += 1
+        else:
+            char_dict[input[i]] = 1
+
+    most_common_char = ''
+    most_common_occurences = 0
+    for char in char_dict.keys():
+        if char_dict[char] > most_common_occurences:
+            most_common_char = char
+            most_common_occurences = char_dict[char]
+
+
     return {
         "input": input,
         "length": len(input),
+        "most common character": most_common_char,
+        "occurences of most common character": most_common_occurences,
     }
 
 @app.route('/stats')
