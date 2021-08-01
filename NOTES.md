@@ -1,2 +1,2 @@
-Please make notes here to clarify any decisions taken that you wish to communicate.
-
+## Initial Thoughts
+It's been about 2 years since I used Python on a regular basis, so I am a little nervous about writing a Flask app. However, since I have been working exclusively on the front end for over a year, it makes the most sense for me to try out Python instead of spending time working out how to set up a backend in NodeJS. My strength at the moment is JavaScript, but I'm sure I can make good progress in Python, too. Plus I do enjoy Python, and I'm excited to try it out again.

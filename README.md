@@ -1,28 +1,27 @@
 # CAP Coding Interview
 
-Through this exercise we wish to assess a candidates ability to execute on some of the more common types of tasks we see on a daily basis.  This exercise includes web services, string/collection manipulation, with a lead into design decisions for conversation during the interview.
+Through this exercise we wish to assess a candidate's ability to execute on some of the more common types of tasks we see on a daily basis.  This exercise includes web services, string/collection manipulation, with a lead into design decisions for conversation during the interview.
 
 Your job is to get the app running, [implement some features](#features-for-you-to-implement), and send us your implementation.
 
 ## Getting Started
 
-To get you off to the right start we've provided an initial implementation of a basic rest service.  It provides an initial implementation of the `/`, `/stringinate` and `/stats` endpoints.  This implementation is available in 3 different languages:
+To get you off to the right start we've provided an initial implementation of a basic rest service.  It provides an initial implementation of the `/`, `/stringinate`, and `/stats` endpoints.  This implementation is available in 3 different languages:
 
 - [Python](python/)
 - [Java](java/)
 - [Go](go/)
 
-Each contains some instructions for requirements and how to get started in that environment. Before you begin work, please create a public repo in github and do all of your there.   
- 
+Each contains some instructions for requirements and how to get started in that environment. Before you begin work, please create a public repo in github and do all of your work there.
 
 ## Guidelines
 
 We don't want to restrict your language choice here.  If your most productive language is NodeJs, Rust, etc. feel free to port the starting service over to the rest framework of your choice.  
 
-Feel free to Google for things when you have questions.  We'd love some insight into your research process so please capture references (URLs) to sites you find helpful in solving these tasks.  Especially if you are tackling the tasks in a language with which you are not the most familiar.  References should be collected in the [CITATIONS.md](CITATIONS.md) file.
+Feel free to Google for things when you have questions.  We'd love some insight into your research process so please capture references (URLs) to sites you find helpful in solving these tasks, especially if you are tackling the tasks in a language with which you are not the most familiar.  References should be collected in the [CITATIONS.md](CITATIONS.md) file.
 
 It's not expected that this exercise take more than an hour or two.  That being said, if you use
-a language/framework combination other than those provided it could run over that time. We've provided a [NOTES.md](NOTES.md) file for you to document any decisions taken or things you'd like to communicate about you solutions.
+a language/framework combination other than those provided, it could run over that time. We've provided a [NOTES.md](NOTES.md) file for you to document any decisions taken or things you'd like to communicate about your solutions.
 
 This is a git project.  We prefer many small commits over one large commit.  It helps us understand your progression towards completion as well as giving us smaller increments to review.
 
@@ -66,7 +65,7 @@ Now that you have a running server it's time to add some features and make some 
 
 There are a few features that need to be added to the user-facing API:
 
-* For the `/stringinate` endpoint, for a given input string we need to find the character that occurs most frequently and add that character, along with its number of occurrences to the API response JSON. You decide how to represent this in the JSON response.  Ignore white space and punctuation.
+* For the `/stringinate` endpoint, for a given input string we need to find the character that occurs most frequently and add that character, along with its number of occurrences, to the API response JSON. You decide how to represent this in the JSON response.  Ignore white space and punctuation.
 * For the `stats` endpoint, track which string input has been seen the most times. Return this value as the `most_popular` key in the response JSON.
 * For the `stats` endpoint, track which string input is the longest string to be seen by the server and return as the `longest_input_received` key in the response JSON.
 
