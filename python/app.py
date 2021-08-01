@@ -51,12 +51,20 @@ def stringinate():
     return {
         "input": input,
         "length": len(input),
-        "most common character": most_common_char,
-        "occurences of most common character": most_common_occurences,
+        "most_common_character": most_common_char,
+        "occurences_of_most_common_character": most_common_occurences,
     }
 
 @app.route('/stats')
 def string_stats():
+    most_popular_string = ''
+    most_popular_occurences = 0
+    for item in seen_strings.keys():
+        if seen_strings[item] > most_popular_occurences:
+            most_popular_string = item
+            most_popular_occurences = seen_strings[item]
+
     return {
         "inputs": seen_strings,
+        "most_popular": most_popular_string,
     }

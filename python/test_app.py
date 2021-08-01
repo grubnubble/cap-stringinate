@@ -21,8 +21,8 @@ def test_stringinate():
 	expected_response = ast.literal_eval(response.data.decode("utf-8"))
 	assert expected_response["input"] == no_whitespace_or_punct["input"]
 	assert expected_response["length"] == 41
-	assert expected_response["most common character"] == "t"
-	assert expected_response["occurences of most common character"] == 6
+	assert expected_response["most_common_character"] == "t"
+	assert expected_response["occurences_of_most_common_character"] == 6
 
 def test_whitespace_and_punctuation_not_included_in_count():
 	response = client.post("/stringinate", json=with_whitespace_and_punct)
@@ -30,5 +30,25 @@ def test_whitespace_and_punctuation_not_included_in_count():
 	expected_response = ast.literal_eval(response.data.decode("utf-8"))
 	assert expected_response["input"] == with_whitespace_and_punct["input"]
 	assert expected_response["length"] == 37
-	assert expected_response["most common character"] == "t"
-	assert expected_response["occurences of most common character"] == 4
+	assert expected_response["most_common_character"] == "t"
+	assert expected_response["occurences_of_most_common_character"] == 4
+
+def test_stats():
+	response = client.get("/stats")
+	assert response.status_code == 200
+	expected_response = ast.literal_eval(response.data.decode("utf-8"))
+	assert expected_response["inputs"] == {
+		no_whitespace_or_punct["input"]: 1,
+		with_whitespace_and_punct["input"]: 1,
+	}
+
+def test_stats_gives_most_popular_string():
+	client.post("/stringinate", json=with_whitespace_and_punct)
+	response = client.get("/stats")
+	assert response.status_code == 200
+	expected_response = ast.literal_eval(response.data.decode("utf-8"))
+	assert expected_response["inputs"] == {
+		no_whitespace_or_punct["input"]: 1,
+		with_whitespace_and_punct["input"]: 2,
+	}
+	assert expected_response["most_popular"] == with_whitespace_and_punct["input"]
