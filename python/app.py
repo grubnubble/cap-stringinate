@@ -1,3 +1,4 @@
+import re
 from flask import Flask
 from flask import request
 
@@ -30,12 +31,14 @@ def stringinate():
     else:
         seen_strings[input] = 1
 
+    input_without_punct = re.sub(r"[^\w\s]", "", input)
+    stripped_input = re.sub(r"\s+", "", input_without_punct)
     char_dict = {}
-    for i in range(len(input)):
-        if input[i] in char_dict:
-            char_dict[input[i]] += 1
+    for i in range(len(stripped_input)):
+        if stripped_input[i] in char_dict:
+            char_dict[stripped_input[i]] += 1
         else:
-            char_dict[input[i]] = 1
+            char_dict[stripped_input[i]] = 1
 
     most_common_char = ''
     most_common_occurences = 0
